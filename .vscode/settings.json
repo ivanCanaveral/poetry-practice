@@ -1,0 +1,20 @@
+{
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.cursorWidth": 1,
+    "editor.cursorStyle": "block",
+    "editor.wordWrap": "on",
+    "editor.trimAutoWhitespace": true,
+    "files.exclude": {
+        "**/.temp": true
+    },
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "python.poetryPath": "/Users/nerea/Library/Python/3.9/bin/poetry",
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.analysis.diagnosticMode": "workspace",
+    "python.languageServer": "Pylance",
+    "python.formatting.provider": "black"
+}
