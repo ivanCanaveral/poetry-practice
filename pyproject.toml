@@ -7,9 +7,11 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-autopep8 = "^1.6.0"
+pyright = "^1.1.254"
 
 [tool.poetry.dev-dependencies]
+pylint = "^2.14.3"
+black = "^22.3.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

@@ -4,6 +4,8 @@ Just playing around with poetry
 
 (!) This repo has been developed using vscode ;) and it assumes that the following extensions are installed:
  * Python
+ * Pylance
+ * pyLint
 
 ## Getting Started
 
@@ -29,7 +31,7 @@ Additionally, you can get poetry's folder with the following command
 where poetry
 ```
 
-Now we can use this info to update VSCode project config: `File > Preferences > Settings`or `[Ctrl + ,]`. 
+Now we can use this info to update VSCode project config: `File > Preferences > Settings`or `[Ctrl + ,]`. You can update `"python.poetryPath"` variable now. It should be more than enough.
 
 ```
 A VS Code "workspace" is usually just your project root folder. Workspace settings as well as debugging and task configurations are stored at the root in a .vscode folder.
@@ -43,4 +45,11 @@ Just modify the poetry configuration, to make poetry install dependencies in you
 ```bash
 poetry config virtualenvs.in-project true
 ```
-## 
+
+## Installing libraries
+
+```bash
+poetry add --dev black
+poetry add --dev pylint
+poetry add --dev pyright
+```
