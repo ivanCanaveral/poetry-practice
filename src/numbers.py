@@ -1,5 +1,6 @@
 """ Tools that deal with numbers"""
 
+
 def is_prime(n: int) -> bool:
     """
     Primality test using 6k+-1 optimization.

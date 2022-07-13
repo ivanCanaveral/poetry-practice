@@ -54,6 +54,17 @@ poetry add --dev pylint
 poetry add --dev pyright
 ```
 
+### Pylint
+
+Pylint is a linter for python. It detect programming errors, so this is about functionality.
+
+```bash
+pytlint <filename/folder>
+```
+
+VS Code will analyze your code automatically.
+
+
 ### Black
 
 Black can help you with code formatting. This is just about style.
@@ -66,12 +77,27 @@ black <filename/folder>
 
 If you're using VS Code, with pyLance extension installed, it will detect and use **black** to format your code.
 
-### Pylint
+#### Black config
 
-Pylint is a linter for python. It detect programming errors, so this is about functionality.
+You can edit black default's passing them through the command line:
 
 ```bash
-pytlint <filename/folder>
+black --check --line-lenght 79 <filename/folder>
 ```
 
-VS Code will analyze your code automatically.
+However, this can get very annoying if you use this tool intensively. In this case, you can always set it in config files.
+
+You can save this configuration within **VS Code Settings** if it is something you are going to use in all your projects. Just add these lines to your settings.json:
+
+```json
+    "python.formatting.blackArgs": [
+        "--line-length", "79"
+    ]
+```
+
+But, if you are going to work as part of a team, you may include this configuration in the `pyproject.toml` file:
+
+```toml
+[tool.black]
+line-length = 79
+```
