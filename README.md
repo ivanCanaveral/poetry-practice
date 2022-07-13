@@ -53,3 +53,25 @@ poetry add --dev black
 poetry add --dev pylint
 poetry add --dev pyright
 ```
+
+### Black
+
+Black can help you with code formatting. This is just about style.
+
+Use `black --check <filename/folder>` to analyze files. When are sure about the changes, just lauch:
+
+```bash
+black <filename/folder>
+```
+
+If you're using VS Code, with pyLance extension installed, it will detect and use **black** to format your code.
+
+### Pylint
+
+Pylint is a linter for python. It detect programming errors, so this is about functionality.
+
+```bash
+pytlint <filename/folder>
+```
+
+VS Code will analyze your code automatically.
