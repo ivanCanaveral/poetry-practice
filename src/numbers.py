@@ -1,4 +1,4 @@
-""" Tools that deal with numbers"""
+""" Tools that deal with numbers """
 
 
 def is_prime(n: int) -> bool:

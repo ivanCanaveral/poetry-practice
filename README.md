@@ -64,6 +64,14 @@ pytlint <filename/folder>
 
 VS Code will analyze your code automatically.
 
+#### pylint config
+
+We can store pylint config in the `pyproject.toml`.
+
+```toml
+[tool.pylint.messages_control]
+max-line-length = 79
+````
 
 ### Black
 
@@ -100,4 +108,27 @@ But, if you are going to work as part of a team, you may include this configurat
 ```toml
 [tool.black]
 line-length = 79
+```
+
+### mypy
+
+Same here:
+
+```bash
+mypy <filename/folder>
+```
+
+#### mypy config
+
+This library also supports `pyproject.toml` configuration.
+
+```toml
+[tool.mypy]
+disallow_untyped_defs = True
+disallow_any_unimported = True
+no_implicit_optional = True
+check_untyped_defs = True
+warn_return_any = True
+show_error_codes = True
+warn_unused_ignores = True
 ```
