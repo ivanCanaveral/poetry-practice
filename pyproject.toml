@@ -20,13 +20,13 @@ max-line-length = 79
 line-length = 79
 
 [tool.mypy]
-disallow_untyped_defs = True
-disallow_any_unimported = True
-no_implicit_optional = True
-check_untyped_defs = True
-warn_return_any = True
-show_error_codes = True
-warn_unused_ignores = True
+disallow_untyped_defs = true
+disallow_any_unimported = true
+no_implicit_optional = true
+check_untyped_defs = true
+warn_return_any = true
+show_error_codes = true
+warn_unused_ignores = true
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
