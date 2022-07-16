@@ -1,5 +1,7 @@
 """ Tools that deal with text """
 
 
-def hello_world(name: str = "Joe") -> str:
+def hello(name: str = "Joe") -> str:
+    """ Returns a greeting
+    """
     return f"Hello {name}"

@@ -16,3 +16,9 @@ def is_prime(n: int) -> bool:
             return False
         i += 6
     return True
+
+def double(n: int) -> int:
+    """
+    doubles any integer
+    """
+    return 2 * n

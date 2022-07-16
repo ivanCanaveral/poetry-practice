@@ -124,11 +124,35 @@ This library also supports `pyproject.toml` configuration.
 
 ```toml
 [tool.mypy]
-disallow_untyped_defs = True
-disallow_any_unimported = True
-no_implicit_optional = True
-check_untyped_defs = True
-warn_return_any = True
-show_error_codes = True
-warn_unused_ignores = True
+disallow_untyped_defs = true
+disallow_any_unimported = true
+no_implicit_optional = true
+check_untyped_defs = true
+warn_return_any = true
+show_error_codes = true
+warn_unused_ignores = true
+```
+
+## Testing
+
+In this case we're using `unittest`.
+
+You can execute tests from the command line:
+
+```zsh
+python -m unittest discover -s tests -p "test*" -v
+```
+
+However, the VS Code plugin for testing could be extremely useful:
+
+```json
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./tests",
+        "-p",
+        "*_test.py"
+    ],
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": true
 ```
