@@ -1,3 +1,5 @@
+""" shapes.py tests """
+
 import unittest
 
 from src.shapes import Rectangle

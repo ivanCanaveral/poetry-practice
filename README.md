@@ -156,3 +156,28 @@ However, the VS Code plugin for testing could be extremely useful:
     "python.testing.pytestEnabled": false,
     "python.testing.unittestEnabled": true
 ```
+
+### Mock
+
+A Mock must simulate any object that it replaces. To achieve such flexibility, it creates its attributes when you access them. We should be able to substitute an object in our code with your new Mock.
+
+For example, if you are mocking the json library and your program calls dumps(), then your Python mock object must also contain dumps().
+
+* A Mock will accept any arguments that you pass to it.
+* The return value of any method of a Mock is also a Mock.
+
+Mock instances store data on how you used them. You can use some methods like:
+
+`.assert_called()` ensures you called the mocked method while.
+`.assert_called_once()` checks that you called the method exactly one time.
+`.assert_called_with(*args, **kwargs)`
+`.assert_called_once_with(*args, **kwargs)`
+
+If they fail, an `AssertionError` will be raised.
+
+You can also explore how these arguments have been called:
+
+`.call_count` Number of times you called it.
+`.call_args` of the last call.
+`.call_args_list` list of calls.
+`.method_calls` list of calls.
