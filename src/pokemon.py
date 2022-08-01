@@ -2,7 +2,7 @@
 
 import requests
 
-def get_pikachu_id():
-    """ gets pikachu id"""
+def get_pikachu_order():
+    """ gets pikachu order"""
     resp = requests.get("https://pokeapi.co/api/v2/pokemon/pikachu")
-    return resp.json()['id']
+    return resp.json()['order']
