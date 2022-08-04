@@ -10,7 +10,13 @@ from src.pokemon import get_pikachu_order
 
 
 class TestPikachuOrder(TestCase):
-    """How to use Mock in tests"""
+    """How to use Mock in tests
+
+    After reading these examples you may be wondering
+    where to patch a function. A good rule of thumb is
+    to patch() the object where it is looked up.
+
+    ! In the first example we are not patching ;) """
 
     def test_pikachu_order_wrong_version(self):
         """it gets the right order
@@ -24,18 +30,18 @@ class TestPikachuOrder(TestCase):
         requests.get.status_code = 200
         # we could change this value, and
         # tests will pass
-        requests.get.json.return_value = {
-            "name": "pikachu",
-            "order": 24
-        }
+        requests.get.json.return_value = {"name": "pikachu", "order": 24}
         self.assertEqual(get_pikachu_order(), 35)
 
-    @patch('src.pokemon.requests')
+    @patch("src.pokemon.requests")
     def test_pikachu_order_right_version(self, mocked_requests):
         """it gets the right order
 
         with a decorator, we patch the object
         for the whole function.
+
+        In this case we don't need to import the target
+        library (requests).
         """
         mocked_requests.get.status_code = 200
         # we could change this value, and
@@ -43,7 +49,7 @@ class TestPikachuOrder(TestCase):
         mocked_requests.get.return_value.json.return_value = {
             "name": "pikachu",
             "id": 25,
-            "order": 35
+            "order": 35,
         }
         self.assertEqual(get_pikachu_order(), 35)
 
@@ -53,24 +59,47 @@ class TestPikachuOrder(TestCase):
         we can also patch and object with a context
         manager to improve readability or to control
         the scope"""
-        with patch('src.pokemon.requests') as mocked_requests:
+        with patch("src.pokemon.requests") as mocked_requests:
             mocked_requests.get.status_code = 200
             # we could change this value, and
             # tests will pass
             mocked_requests.get.return_value.json.return_value = {
                 "name": "pikachu",
                 "id": 25,
-                "order": 35
+                "order": 35,
             }
             self.assertEqual(get_pikachu_order(), 35)
 
     def test_pokemon_api_timeout(self):
-        """ it tests it raises a Timeout
+        """it tests it raises a Timeout
 
         we can test more than one assert in a function"""
-        with patch('src.pokemon.requests') as mocked_requests:
+        with patch("src.pokemon.requests") as mocked_requests:
             mocked_requests.get.side_effect = Timeout
             with self.assertRaises(Timeout):
                 _ = get_pikachu_order()
                 # we can also test that we only call it once
                 mocked_requests.get.assert_called_once()
+
+    def test_pokemon_api_timeout_again(self):
+        """it tests it raises a Timeout
+
+        we can also patch concrete methods or
+        attributes in an object. In this case
+        we do really need to import the object.
+
+        Unlike what happens in the first test,
+        it works just patching the object/library
+        globally.
+
+        or even dicts, with patch.dict()
+
+        We can also applay patch.object as a decorator:
+        @patch.object(requests, 'get', side_effect=Timeout)
+        """
+        with patch.object(
+            requests, "get", side_effect=Timeout
+        ) as mocked_requests:
+            mocked_requests.get.side_effect = Timeout
+            with self.assertRaises(Timeout):
+                _ = get_pikachu_order()
