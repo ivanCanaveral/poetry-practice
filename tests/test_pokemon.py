@@ -16,7 +16,7 @@ class TestPikachuOrder(TestCase):
     where to patch a function. A good rule of thumb is
     to patch() the object where it is looked up.
 
-    ! In the first example we are not patching ;) """
+    ! In the first example we are not patching ;)"""
 
     def test_pikachu_order_wrong_version(self):
         """it gets the right order
@@ -74,7 +74,7 @@ class TestPikachuOrder(TestCase):
         """it tests it raises a Timeout
 
         we can test more than one assert in a function"""
-        with patch("src.pokemon.requests") as mocked_requests:
+        with patch("src.pokemon.requests", autospec=True) as mocked_requests:
             mocked_requests.get.side_effect = Timeout
             with self.assertRaises(Timeout):
                 _ = get_pikachu_order()
@@ -100,6 +100,25 @@ class TestPikachuOrder(TestCase):
         with patch.object(
             requests, "get", side_effect=Timeout
         ) as mocked_requests:
-            mocked_requests.get.side_effect = Timeout
+            with self.assertRaises(Timeout):
+                _ = get_pikachu_order()
+
+    def test_pokemon_api_timeout_again_again(self):
+        """it tests it raises a Timeout
+
+        Patching is very flexible, but you can easily
+        write pointless test by mispelling or after
+        changing a method or attribute name without
+        updating your tests.
+
+        To avoid that, you can use autospec. This option
+        inspects the object, and limit the method or
+        attribute names you can patch mock/patch.
+
+        You can always define your specs manually.
+        """
+        with patch.object(
+            requests, "get", side_effect=Timeout, autospec=True
+        ) as mocked_requests:
             with self.assertRaises(Timeout):
                 _ = get_pikachu_order()
